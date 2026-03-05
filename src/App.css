@@ -1,0 +1,258 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #1a1a2e;
+  color: #e0e0e0;
+  overflow-x: hidden;
+  user-select: none;
+}
+
+.app {
+  padding: 16px 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f0f0f0;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.status .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #666;
+}
+
+.status.connected .dot { background: #4caf50; }
+.status.connecting .dot { background: #ff9800; animation: pulse 1s infinite; }
+.status.disconnected .dot { background: #f44336; }
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.price-card {
+  background: #16213e;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #1a1a4e;
+  display: flex;
+  flex-direction: column;
+}
+
+.price-card h2 {
+  font-size: 15px;
+  font-weight: 500;
+  color: #aaa;
+  margin-bottom: 12px;
+}
+
+.price-card .loading {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 14px;
+}
+
+.main-price {
+  font-size: 32px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 6px;
+}
+
+.price-card.up .main-price { color: #ef5350; }
+.price-card.down .main-price { color: #26a69a; }
+
+.change {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.change.up { color: #ef5350; }
+.change.down { color: #26a69a; }
+
+.details {
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.detail-row span:first-child {
+  color: #888;
+}
+
+.detail-row span:last-child {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Flash animation on price change */
+.flash {
+  animation: flash-bg 0.4s ease-out;
+}
+
+@keyframes flash-bg {
+  0% { background-color: rgba(255, 255, 255, 0.15); border-radius: 4px; }
+  100% { background-color: transparent; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* Position panel */
+.position-panel {
+  margin-top: 16px;
+  background: #16213e;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #1a1a4e;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.panel-header h3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #aaa;
+}
+
+.profit-total {
+  font-size: 18px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.form-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.form-row select, .form-row input {
+  background: #1a1a2e;
+  border: 1px solid #333;
+  border-radius: 6px;
+  color: #e0e0e0;
+  padding: 6px 10px;
+  font-size: 13px;
+  outline: none;
+  flex: 1;
+  min-width: 0;
+}
+
+.form-row select { flex: 0 0 80px; }
+
+.form-row button {
+  background: #2962ff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-size: 13px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.form-row button:hover { background: #1e88e5; }
+
+.position-list {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.position-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 8px 4px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.position-item:last-child { border-bottom: none; }
+
+.pos-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pos-code {
+  font-weight: 600;
+  color: #ccc;
+}
+
+.pos-detail {
+  color: #888;
+}
+
+.pos-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.tag-long { color: #ef5350; font-weight: 600; }
+.tag-short { color: #26a69a; font-weight: 600; }
+
+.btn-remove {
+  background: none;
+  border: none;
+  color: #555;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.btn-remove:hover { color: #f44336; background: rgba(244,67,54,0.1); }
+
+.profit-up { color: #ef5350; }
+.profit-down { color: #26a69a; }
+.profit-wait { color: #555; }
